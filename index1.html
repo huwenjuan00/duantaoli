@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应网页</title>
+    <style>
+        /* 全局样式 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 菜单栏样式 */
+        .navbar {
+            height: 60px;
+            background-color: #b4dfa7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+        }
+
+        /* 模块通用样式 */
+        .module {
+            height: 600px;
+            display: flex;
+        }
+
+        /* 模块内容通用样式，确保文字居中 */
+        .module div {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* 模块标题样式 */
+        .module h2 {
+            font-size: 36px; /* 调整标题字体大小 */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* 模块段落样式 */
+        .module p {
+            font-family: 宋体;
+            font-size: 16px; /* 调整段落字体大小 */
+            max-width: 80%; /* 限制段落宽度，使文字布局更美观 */
+        }
+
+        /* 模块一样式 */
+        #module1-left {
+            width: 30%;
+            background-color: #90cf7e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #module1-right {
+            width: 70%;
+            background-color: #388a48;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* 模块二样式 */
+        #module2-left {
+            width: 70%;
+            background-color: #388a48;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #module2-right {
+            width: 30%;
+            background-color: #90cf7e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* 模块三样式 */
+        #module3 {
+            flex-direction: column;
+        }
+
+        #module3-top {
+            height: 30%;
+            background-color: #90cf7e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #module3-bottom {
+            height: 70%;
+            background-color: #388a48;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* 返回顶部箭头样式 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            font-size: 28px;
+            color: white;
+            background-color: #FF5722;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* 图片样式 */
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 菜单栏 -->
+    <div class="navbar">
+        <a href="#" onclick="scrollToTop()">首页</a>
+        <a href="#" onclick="scrollToSection('module1')">解压</a>
+        <a href="#" onclick="scrollToSection('module2')">工作日</a>
+        <a href="#" onclick="scrollToSection('module3')">情绪价值</a>
+    </div>
+
+    <!-- 模块一 -->
+    <div id="module1" class="module">
+        <div id="module1-left">
+            <h2>年轻人实现解压的方式</h2>
+            <p>在职场高压常态下，越来越多的人开始探寻工作与生活的平衡支点，他们试图在完成工作后，抽离日常循环，浸入一个能让人完全放松的场景，让身心完成能量重启。面对职场的高压，当代年轻人正努力寻求合适的解压方式完成每周的“短逃离”之旅。</p>
+        </div>
+        <div id="module1-right">
+            <img src="picture1.jpg" alt="picture1">
+        </div>
+    </div>
+
+    <!-- 模块二 -->
+    <div id="module2" class="module">
+        <div id="module2-left">
+            <img src="picture2.jpg" alt="picture2">
+        </div>
+        <div id="module2-right">
+            <h2>工作日如何疏解压力</h2>
+            <p>短逃离，是奔波生活里一场精致的精神快充。尽管工作日已被琐碎填满，他们也要在下班后进入属于自己的乌托邦。刷短视频已经成为大家共同的首选解压方式，当指尖划过屏幕，那些笑泪交织的剧情，正与外卖餐盒里的烟火气悄悄共振。</p>
+        </div>
+    </div>
+
+    <!-- 模块三 -->
+    <div id="module3" class="module">
+        <div id="module3-top">
+            <h2>为什么愿意为情绪买单</h2>
+            <p>“短逃离”的流行可以窥测出年轻人更在意“情绪价值”了。他们愿意为了提升心情而消费，花钱买快乐、买舒服。这种消费观念的变化，也体现出年轻人更追求生活质量，更重视自己的情感需求。</p>
+        </div>
+        <div id="module3-bottom">
+            <img src="picture3.jpg" alt="picture3">
+        </div>
+    </div>
+
+    <!-- 返回顶部箭头 -->
+    <div id="back-to-top" onclick="scrollToTop()">↑</div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const target = document.getElementById(sectionId).offsetTop;
+            window.scrollTo({
+                top: target,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>
